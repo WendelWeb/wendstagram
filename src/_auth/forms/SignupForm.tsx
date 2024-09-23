@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -21,11 +22,11 @@ import { INITIAL_USER, useUserContext } from "@/context/AuthContext"
 
 const SignupForm = () => {
   const { toast } = useToast();
-  const { checkAuthUser, isLoading: isUserLoading } = useUserContext();
+  const { checkAuthUser  } = useUserContext();
 
   const navigate = useNavigate();
 
-  const { user, setUser, setIsAuthenticated, isLoading } = useUserContext();
+  const { user, setUser, setIsAuthenticated } = useUserContext();
   const { mutate: signOut } = useSignOutAccount();
 
   console.log(user);
@@ -43,7 +44,7 @@ const SignupForm = () => {
 
   const { mutateAsync: createUserAccount, isPending: isCreatingAccount } =
     useCreateUserAccount();
-  const { mutateAsync: signInAccount, isPending: isSigninIn } =
+  const { mutateAsync: signInAccount, } =
     useSignInAccount();
 
   // 1. Define your form.

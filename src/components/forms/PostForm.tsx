@@ -15,8 +15,8 @@ import { useNavigate } from "react-router-dom";
 import { Input } from "../../components/ui/input";
 import FileUploader from "../shared/FileUploader";
 import { PostValidation } from "@/lib/validation";
-import { INewPost } from "../../types/index";
-import { updatePost } from "@/lib/appwrite/api";
+// import { INewPost } from "../../types/index";
+// import { updatePost } from "@/lib/appwrite/api";
 import { Models } from "appwrite";
 import { useCreatePost, useUpdatePost } from "@/lib/react-query/queriesAndMutations";
 import { useUserContext } from "@/context/AuthContext";
@@ -24,7 +24,7 @@ import { useToast } from "@/hooks/use-toast";
 import Loader from "../shared/Loader";
 type PostFormProps = {
   post?: Models.Document;
-  action: "Create" | "Update";
+  action?: "Create" | "Update";
 };
 
 const PostForm = ({ post, action }: PostFormProps) => {

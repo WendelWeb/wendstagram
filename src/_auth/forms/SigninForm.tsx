@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -16,7 +17,6 @@ import Loader from "@/components/shared/Loader";
 import { Link, useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import {
-  useCreateUserAccount,
   useSignOutAccount,
   useSignInAccount,
 } from "@/lib/react-query/queriesAndMutations";
@@ -25,10 +25,10 @@ import { useEffect } from "react";
 
 const SigninForm = () => {
   const {toast} = useToast();
-  const { checkAuthUser, isLoading: isUserLoading } = useUserContext();
+  const { checkAuthUser,  } = useUserContext();
   const navigate = useNavigate();
   ///////
-const { user, setUser, setIsAuthenticated, isLoading } = useUserContext();
+const { user, setUser, setIsAuthenticated } = useUserContext();
   const { mutate: signOut } = useSignOutAccount();
 
 console.log(user);

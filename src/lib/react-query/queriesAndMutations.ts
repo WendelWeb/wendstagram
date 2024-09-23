@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {  useMutation, useQueryClient, useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { createUserAccount, signInAccount, signOutAccount, createPost, getRecentPosts, likePost, savePost, deleteSavedPost,getCurrentUser,getPostById,getUserPosts,updatePost,deletePost,searchPosts,getInfinitePosts,getUserById,updateUser,getUsers } from "../appwrite/api";
 import { INewPost, INewUser, IUpdatePost, IUpdateUser, } from "@/types";
 import { QUERY_KEYS } from './queryKeys';
+// import { any } from "zod";
 
 
 export const useCreateUserAccount = () =>{
@@ -114,7 +116,7 @@ export const useGetCurrentUser = () => {
   return useQuery({
     queryKey: [QUERY_KEYS.GET_CURRENT_USER],
     queryFn: getCurrentUser,
-  });
+  })
 };
 
 export const useGetUsers = (limit?: number) => {
@@ -154,21 +156,37 @@ export const useGetPostById = (postId?: string) => {
     enabled: !!postId,
   });
 };
-export const useGetPosts = () => {
-  return useInfiniteQuery({
-    queryKey: [QUERY_KEYS.GET_INFINITE_POSTS],
-    queryFn: getInfinitePosts as any,
-    getNextPageParam: (lastPage: any) => {
-      // If there's no data, there are no more pages.
-      if (lastPage && lastPage.documents.length === 0) {
-        return null;
-      }
 
-      // Use the $id of the last document as the cursor.
-      const lastId = lastPage.documents[lastPage.documents.length - 1].$id;
-      return lastId;
-    },
-  });
+// export const useGetPosts = () => {
+//   return useInfiniteQuery({
+//     queryKey: [QUERY_KEYS.GET_INFINITE_POSTS],
+//     queryFn: getInfinitePosts,
+//     getNextPageParam: (lastPage: any) => {
+//       // If there's no data, there are no more pages.
+//       if (lastPage && lastPage.documents.length === 0) {
+//         return null;
+//       }
+
+//       // Use the $id of the last document as the cursor.
+//       const lastId = lastPage.documents[lastPage.documents.length - 1].$id;
+//       return lastId;
+//     },
+//   });
+// };
+export const useGetPosts = () => {
+return useInfiniteQuery({
+  queryKey: [QUERY_KEYS.GET_INFINITE_POSTS],
+  queryFn: getInfinitePosts as any,
+  getNextPageParam: (lastPage: any) => {
+    if (!lastPage || lastPage.documents.length === 0) {
+      return null;
+    }
+
+    const lastId = lastPage.documents[lastPage.documents.length - 1].$id;
+    return lastId;
+  },
+  initialPageParam: null, // Set initialPageParam to null
+});
 };
 
 export const useSearchPosts = (searchTerm: string) => {

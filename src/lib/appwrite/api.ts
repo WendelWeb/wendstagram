@@ -1,7 +1,7 @@
-import { INewPost, INewUser, IUpdatePost } from "@/types";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { INewPost, INewUser, IUpdatePost, IUpdateUser } from "@/types";
 import { account, avatars, databases, appwriteConfig,storage } from './config';
 import { ID, Query } from "appwrite";
-import { error } from "console";
 // import { Query } from "@tanstack/react-query";
 
 
@@ -153,8 +153,8 @@ export function getFilePreview(fileId: string) {
       fileId,
       2000,
       2000,
-      "top",
-      100
+      // "top",
+      // 100
     );
 
     if (!fileUrl) throw Error;
