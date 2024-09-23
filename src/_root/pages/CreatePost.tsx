@@ -8,7 +8,7 @@ const CreatePost = () => {
           <img
             width={36}
             height={36}
-            src="/public/assets/icons/add-post.svg"
+            src="/assets/icons/add-post.svg"
             alt="add-post-icon"
           />
           <h2 className="h3-bold md:h2-bold text-left w-full ">Create Post</h2>

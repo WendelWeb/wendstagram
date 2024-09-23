@@ -78,7 +78,7 @@ useEffect(() => {
   return (
     <Form {...form}>
       <div className="sm:w-420 flex-center flex-col ">
-        <img src="/public/assets/images/logo.svg" alt="wendstagram-logo" />
+        <img src="/assets/images/logo.svg" alt="wendstagram-logo" />
         <h2 className="h3-bold md:h2-bold pt-3 sm:pt-3">
           Loggin to your account
         </h2>

@@ -53,7 +53,7 @@ const FileUploader = ({ fieldChange, mediaUrl }: FileUploaderProps) => {
           <img
             width={96}
             height={77}
-            src="/public/assets/icons/file-upload.svg"
+            src="/assets/icons/file-upload.svg"
             alt="uploader icon"
           />
 
